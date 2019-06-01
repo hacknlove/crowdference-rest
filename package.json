@@ -1,0 +1,25 @@
+{
+  "name": "crowdference-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "mongodb": "^3.2.6",
+    "open-graph-scraper": "^3.6.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "ava": "^1.4.1",
+    "standard": "^12.0.1",
+    "supertest": "^4.0.2"
+  }
+}
