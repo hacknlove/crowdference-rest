@@ -5,6 +5,8 @@
   await require('./mongo')(server)
 
   require('./endpoints/url')(server)
+  require('./endpoints/addLink')(server)
+
   server.server = require('http').createServer(server.app)
   server.server.listen(8000, '0.0.0.0')
   console.log('listen', new Date())
