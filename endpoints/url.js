@@ -12,7 +12,7 @@ module.exports = function (server) {
       url: req.params.url
     }, {
       projection: {
-        bookmarks: 1
+        _id: 1
       }
     })
     if (url) {
@@ -28,26 +28,20 @@ module.exports = function (server) {
     }, {
       projection: {
         title: 1,
-        description: 1,
-        image: 1,
-        'url.0': 1,
-        bookmarks: 1
+        url: 1
       }
-    }).toArray()
+    }).sort({ votesFrom: -1 }).limit(10).toArray()
     next()
   }
   const getUrlFrom = async function getUrlFrom (req, res, next) {
     req.currentUrl.fromUrl = await server.urls.find({
       toUrlId: req.currentUrl._id
     }, {
-        projection: {
-          title: 1,
-          description: 1,
-          image: 1,
-          'url.0': 1,
-          bookmarks: 1
-        }
-      }).toArray()
+      projection: {
+        title: 1,
+        url: 1
+      }
+    }).sort({ votesTo: -1 }).limit(10).toArray()
     next()
   }
   const getUrlResponse = async function getUrlResponse (req, res, next) {
