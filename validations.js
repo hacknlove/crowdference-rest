@@ -7,7 +7,11 @@ module.exports = function (server) {
   }
 
   server.validations = {
-    testUrl: Joi.string().regex(server.regexs.testUrl).required()
+    testUrl: Joi.string().regex(server.regexs.testUrl).required(),
+    addLink: {
+      fromUrl: Joi.string().regex(server.regexs.testUrl).required(),
+      toUrl: Joi.string().regex(server.regexs.testUrl).required()
+    }
   }
 
   server.end = function end (codigo, mensaje, res) {
