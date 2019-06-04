@@ -1,0 +1,5 @@
+.config
+.git
+.npm
+node_modules
+.gitignore
