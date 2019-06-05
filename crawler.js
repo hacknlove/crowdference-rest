@@ -20,7 +20,7 @@ const rrss = {
 module.exports = function (server) {
 
   server.randomId = function randomId () {
-    a = `${Math.random().toString(36).replace(/^0./, '')}${Math.random().toString(36).replace(/^0./, '')}${Math.random().toString(36).replace(/^0./, '')}`.substr(0, 17)
+    return `${Math.random().toString(36).replace(/^0./, '')}${Math.random().toString(36).replace(/^0./, '')}${Math.random().toString(36).replace(/^0./, '')}`.substr(0, 17)
   }
 
   server.ogs = require('open-graph-scraper')
