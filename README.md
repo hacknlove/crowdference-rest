@@ -11,19 +11,11 @@ I do, and that's the reason I have created crowdference.
 
 I hope you enjoy it, and feel free to give me feedback or help me with the code.
 
-
-## Browser Extensions
-https://github.com/hacknlove/crowdference-browser-extension
-
-### Firefox
-https://addons.mozilla.org/en-US/firefox/addon/crowdference/
-
-### Chrome
-https://chrome.google.com/webstore/detail/crowdference/jbopfnfbbjplhhghgnhhemhihcfkclbb?hl=es
-
-### crowdference rewebapp
-https://github.com/hacknlove/crowdference
-
 ## Docker image
 
 https://cloud.docker.com/u/hacknlove/repository/docker/hacknlove/crowdference-rest-api
+
+## Related repositories
+* https://github.com/hacknlove/crowdference-browser-extension
+* https://github.com/hacknlove/crowdference
+* https://github.com/hacknlove/crowdference-dev-environment
