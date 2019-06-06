@@ -16,7 +16,6 @@ module.exports = function (server) {
       }
     })
     if (url) {
-      console.log(url)
       req.currentUrl = url
       return next()
     }

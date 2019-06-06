@@ -80,8 +80,6 @@ module.exports = function (server) {
     }
 
     response = await server.ogs(opciones)
-    console.log(url)
-    console.log(url)
     if (!response) {
       return
     }
