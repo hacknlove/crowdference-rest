@@ -2,14 +2,15 @@
 
 module.exports = function (server) {
   const getUrlValidation = function getUrlValidation (req, res, next) {
+    req.fullurl = req.originalUrl.substr('/url/'.length)
     server.validate({
-      data: req.params.url,
+      data: req.fullurl,
       schema: server.validations.testUrl
     }, res, next)
   }
   const getUrl = async function getUrl (req, res, next) {
     const url = await server.urls.findOne({
-      url: req.params.url
+      url: server.removeProtocol(req.fullurl)
     }, {
       projection: {
         _id: 1
@@ -46,9 +47,9 @@ module.exports = function (server) {
   const getUrlResponse = async function getUrlResponse (req, res, next) {
     res.status(200).json(req.currentUrl).end()
   }
-  server.app.get('/url/:url', getUrlValidation)
-  server.app.get('/url/:url', getUrl)
-  server.app.get('/url/:url', getUrlTo)
-  server.app.get('/url/:url', getUrlFrom)
-  server.app.get('/url/:url', getUrlResponse)
+  server.app.get('/url/:url*', getUrlValidation)
+  server.app.get('/url/:url*', getUrl)
+  server.app.get('/url/:url*', getUrlTo)
+  server.app.get('/url/:url*', getUrlFrom)
+  server.app.get('/url/:url*', getUrlResponse)
 }

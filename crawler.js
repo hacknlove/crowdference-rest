@@ -16,8 +16,10 @@ const rrss = {
   }
 }
 
-
 module.exports = function (server) {
+  server.removeProtocol = function removeProtocol (url) {
+    return url.replace(/^http(s)?:\/\//, '')
+  }
 
   server.randomId = function randomId () {
     return `${Math.random().toString(36).replace(/^0./, '')}${Math.random().toString(36).replace(/^0./, '')}${Math.random().toString(36).replace(/^0./, '')}`.substr(0, 17)
@@ -26,13 +28,13 @@ module.exports = function (server) {
   server.ogs = require('open-graph-scraper')
 
   server.getUrl = async function getUrl (url) {
+    url = server.removeProtocol(url)
     return await server.urls.findOne({
       url
     }) || server.insertUrl(await server.updateUrl(url))
   }
 
-
-  server.insertUrl = async function insertUrl(url) {
+  server.insertUrl = async function insertUrl (url) {
     if (!url) {
       return
     }
@@ -43,15 +45,17 @@ module.exports = function (server) {
     })
 
     if (l) {
+      l.url.splice(3)
+      l.url.push(url.url)
+
       server.urls.update(l._id, {
-        $addToSet: {
-          url: {
-            $each: url.url
-          }
+        $set: {
+          url: l.url
         }
       })
       return l
     }
+
     url._id = server.randomId()
     url.contentUpdated = new Date()
     url.lastActivity = new Date()
@@ -66,7 +70,6 @@ module.exports = function (server) {
 
     server.urls.insertOne(url)
     return url
-
   }
 
   server.updateUrl = async function updateUrl (url) {
@@ -89,9 +92,12 @@ module.exports = function (server) {
     }
 
     if (response.data.ogUrl) {
-      url = Array.from(new Set([response.data.ogUrl, url]))
+      url = Array.from(new Set([
+        server.removeProtocol(response.data.ogUrl),
+        server.removeProtocol(url)
+      ]))
     } else {
-      url = [url]
+      url = [server.removeProtocol(url)]
     }
 
     var siteName = response.data.ogSiteName || response.data.twitterSite
@@ -108,5 +114,4 @@ module.exports = function (server) {
     }
     return response
   }
-
 }

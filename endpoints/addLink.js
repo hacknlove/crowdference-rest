@@ -64,7 +64,9 @@ module.exports = function (server) {
     next()
   }
   const response = async function response (req, res, next) {
-    res.status(200).json({ok: true}).end()
+    res.status(200).json({
+      ok: true
+    }).end()
   }
   server.app.post('/addLink', validate)
   server.app.post('/addLink', getFrom)
