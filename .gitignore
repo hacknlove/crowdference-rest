@@ -1,3 +1,4 @@
 node_modules
 .config/configstore/update-notifier-nodemon.json
 .config/configstore/update-notifier-nodemon.json
+.npm
