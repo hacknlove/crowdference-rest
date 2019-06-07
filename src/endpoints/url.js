@@ -1,5 +1,6 @@
 'use strict'
 
+
 module.exports = function (server) {
   const getUrlValidation = function getUrlValidation (req, res, next) {
     req.fullurl = req.originalUrl.substr('/url/'.length)

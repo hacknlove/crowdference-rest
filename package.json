@@ -1,11 +1,12 @@
 {
   "name": "crowdference-rest-api",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "bash build.sh"
+    "build": "bash build.sh",
+    "test": "bash test/test.sh"
   },
   "author": "",
   "license": "ISC",

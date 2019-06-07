@@ -15,6 +15,12 @@ I hope you enjoy it, and feel free to give me feedback or help me with the code.
 
 https://cloud.docker.com/u/hacknlove/repository/docker/hacknlove/crowdference-rest-api
 
+## testing
+
+```
+npm test
+```
+
 ## Related repositories
 * https://github.com/hacknlove/crowdference-browser-extension
 * https://github.com/hacknlove/crowdference

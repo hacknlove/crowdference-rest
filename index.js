@@ -1,11 +1,11 @@
 (async function (server) {
-  require('./express')(server)
-  require('./crawler')(server)
-  require('./validations')(server)
-  await require('./mongo')(server)
+  require('./src/express')(server)
+  require('./src/crawler')(server)
+  require('./src/validations')(server)
+  await require('./src/mongo')(server)
 
-  require('./endpoints/url')(server)
-  require('./endpoints/addLink')(server)
+  require('./src/endpoints/url')(server)
+  require('./src/endpoints/addLink')(server)
 
   server.server = require('http').createServer(server.app)
   server.server.listen(8000, '0.0.0.0')
