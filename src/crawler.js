@@ -75,13 +75,12 @@ module.exports = function (server) {
   server.updateUrl = async function updateUrl (url) {
     var response
     var opciones = {
-      url,
+      url: `https://${url}`,
       headers: {
         'User-Agent': 'FeedFetcher-Google; (+http://www.google.com/feedfetcher.html)',
         'Accept-Language': 'en-US, en'
       }
     }
-
     response = await server.ogs(opciones)
     if (!response) {
       return
